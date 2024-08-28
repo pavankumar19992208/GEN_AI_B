@@ -11,6 +11,7 @@ class DataModel(BaseModel):
     topic: str
     subTopic: str
     problemStatement: str
+    problemStatementTitle:str
     code: Dict[str, str]
     testCases: List[Dict[str, str]]
 
@@ -32,6 +33,7 @@ async def save_data(data: DataModel):
                         "subTopics.$.problemStatements": {
                             "_id": ObjectId(),
                             "problemStatement": data.problemStatement,
+                            "problemStatementTitle": data.problemStatementTitle,
                             "code": data.code,
                             "testCases": data.testCases
                         }
@@ -72,6 +74,7 @@ async def save_data(data: DataModel):
                     "problemStatements": [{
                         "_id": ObjectId(),
                         "problemStatement": data.problemStatement,
+                        "problemStatementTitle": data.problemStatementTitle,
                         "code": data.code,
                         "testCases": data.testCases
                     }]
