@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from db import get_database
 from bson import ObjectId
+import logging
 
 get_list_router = APIRouter()
 db = get_database()
@@ -21,6 +22,7 @@ async def get_data():
         print(formatted_data)
         return formatted_data
     except Exception as e:
+        logging.error(f"Error in get_data: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 @get_list_router.get("/api/getFullList")
@@ -41,7 +43,10 @@ async def get_full_list():
                     "problemStatements": [
                         {
                             "id": str(problem["_id"]),
-                            "title": problem["problemStatementTitle"]
+                            "title": problem.get("problemStatementTitle", "No Title"),
+                            "problemStatement": problem.get("problemStatement", "No Problem Statement"),
+                            "code": problem.get("code", {}),
+                            "testCases": problem.get("testCases", [])
                         }
                         for problem in subtopic.get("problemStatements", [])
                     ]
@@ -51,4 +56,5 @@ async def get_full_list():
         print(formatted_data)
         return formatted_data
     except Exception as e:
+        logging.error(f"Error in get_full_list: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
