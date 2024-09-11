@@ -30,7 +30,7 @@ async def assist(request: Request):
         Generate a focused question to help the student understand the cause of the error.
         Keep the question concise and relevant.
         Question:
-        [Gemini's potential next question based on the student's answer from previous conversation or code change and previous question asked to student. (if applicable)]
+        [Provide feedback on the correctness of the code and Gemini's potential next question based on the student's answer from previous conversation or code change and previous question asked to student. (if applicable)]
         Feedback:
         [Gemini's feedback on the last student response (mandatory)]
         """

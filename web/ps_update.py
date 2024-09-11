@@ -20,7 +20,7 @@ async def save_data(data: DataModel):
     try:
         # Check if the topic exists
         topic_doc = await db.data.find_one({"topic": data.topic})
-        
+        print("pstitle :", data.problemStatementTitle)
         if topic_doc:
             # Check if the subTopic exists under the topic
             sub_topic_doc = await db.data.find_one({"topic": data.topic, "subTopics.subTopic": data.subTopic})
@@ -51,6 +51,7 @@ async def save_data(data: DataModel):
                     "problemStatements": [{
                         "_id": ObjectId(),
                         "problemStatement": data.problemStatement,
+                        "problemStatementTitle": data.problemStatementTitle,
                         "code": data.code,
                         "testCases": data.testCases
                     }]
