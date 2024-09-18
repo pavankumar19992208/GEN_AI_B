@@ -1,10 +1,10 @@
 fastapi==0.78.0
 uvicorn==0.17.6
 pydantic==1.9.0
-bson==0.5.10
 motor==2.5.1
 mysql-connector-python==8.0.29
 google-cloud==0.34.0
 google-auth==2.6.6
 google-api-python-client==2.45.0
 google-generativeai==0.1.0
+pymongo[srv]==3.12.3
