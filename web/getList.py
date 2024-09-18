@@ -19,7 +19,6 @@ async def get_data():
             topic_name = topic["topic"]
             subtopics = [subtopic["subTopic"] for subtopic in topic.get("subTopics", [])]
             formatted_data[topic_name] = subtopics
-        print(formatted_data)
         return formatted_data
     except Exception as e:
         logging.error(f"Error in get_data: {e}")
@@ -53,7 +52,6 @@ async def get_full_list():
                 }
                 subtopics.append(subtopic_info)
             formatted_data[topic_name] = subtopics
-        print(formatted_data)
         return formatted_data
     except Exception as e:
         logging.error(f"Error in get_full_list: {e}")

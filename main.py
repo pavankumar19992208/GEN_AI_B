@@ -10,7 +10,7 @@ app = FastAPI(docs_url="/docs")
 from runtests.runtests_router import runtests_router
 
 origins = [
-    "*",  # Allow all origins
+    "*",  # Allow all origins 
 ]
 
 app.add_middleware(
