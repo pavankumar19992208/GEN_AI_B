@@ -3,6 +3,10 @@ import google.generativeai as genai
 
 # Get the API key from environment variable
 api_key = os.getenv("GENAI_API_KEY")
+
+if not api_key:
+    raise ValueError("API key not found in environment variables")
+
 genai.configure(api_key=api_key)
 
 def generate_content(prompt: str) -> str:
