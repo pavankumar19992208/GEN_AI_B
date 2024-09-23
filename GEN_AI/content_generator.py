@@ -1,6 +1,9 @@
+import os
 import google.generativeai as genai
 
-genai.configure(api_key="AIzaSyCWdRGOjQ6W7fPIN2ooevW16_acWTvcgEQ")
+# Get the API key from environment variable
+api_key = os.getenv("GENAI_API_KEY")
+genai.configure(api_key=api_key)
 
 def generate_content(prompt: str) -> str:
     try:

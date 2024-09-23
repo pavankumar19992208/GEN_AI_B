@@ -36,3 +36,6 @@ jobs:
           --platform managed \
           --region us-central1 \
           --allow-unauthenticated
+
+    - name: Set environment variable for API key
+      run: echo "GENAI_API_KEY=${{ secrets.GENAI_API_KEY }}" >> $GITHUB_ENV
